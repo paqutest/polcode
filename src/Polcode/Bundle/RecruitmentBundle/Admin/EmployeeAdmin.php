@@ -50,6 +50,20 @@ class EmployeeAdmin extends Admin
             ->add('firstName')
             ->add('lastName')
             ->add('email')
+            ->add('am','entity',array(
+            
+            'required'=>true,
+            'class'=>'PolcodeRecruitmentBundle:AM',
+            'property'=> 'UniqueName',
+                 'expanded' => true ,
+                'multiple' => false
+                
+            ))
+            ->add('projects' , 'entity' , array(
+                      'class'    => 'PolcodeRecruitmentBundle:Project' ,
+                      'property' => 'name' ,
+                      'expanded' => true ,
+                      'multiple' => true , ))
         ;
     }
 

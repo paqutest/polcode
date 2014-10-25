@@ -16,6 +16,7 @@ class Project
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -28,6 +29,11 @@ class Project
      * @var \DateTime
      */
     private $endAt;
+
+    /**
+     * @var boolean
+     */
+    private $isInternal;
 
 
     /**
@@ -107,5 +113,28 @@ class Project
     public function getEndAt()
     {
         return $this->endAt;
+    }
+
+    /**
+     * Set isInternal
+     *
+     * @param boolean $isInternal
+     * @return Project
+     */
+    public function setIsInternal($isInternal)
+    {
+        $this->isInternal = $isInternal;
+
+        return $this;
+    }
+
+    /**
+     * Get isInternal
+     *
+     * @return boolean 
+     */
+    public function getIsInternal()
+    {
+        return $this->isInternal;
     }
 }

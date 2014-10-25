@@ -3,6 +3,7 @@
 namespace Polcode\Bundle\RecruitmentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Project
@@ -16,6 +17,7 @@ class Project
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -34,6 +36,14 @@ class Project
      */
     private $isInternal;
 
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     /**
      * Get id
@@ -135,5 +145,33 @@ class Project
     public function getIsInternal()
     {
         return $this->isInternal;
+    }
+    /**
+     * @var \Polcode\Bundle\RecruitmentBundle\Entity\AM
+     */
+    private $am;
+
+
+    /**
+     * Set am
+     *
+     * @param \Polcode\Bundle\RecruitmentBundle\Entity\AM $am
+     * @return Project
+     */
+    public function setAm(\Polcode\Bundle\RecruitmentBundle\Entity\AM $am = null)
+    {
+        $this->am = $am;
+
+        return $this;
+    }
+
+    /**
+     * Get am
+     *
+     * @return \Polcode\Bundle\RecruitmentBundle\Entity\AM 
+     */
+    public function getAm()
+    {
+        return $this->am;
     }
 }

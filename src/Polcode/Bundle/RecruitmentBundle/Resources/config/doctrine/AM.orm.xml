@@ -7,5 +7,7 @@
     <field name="firstName" type="string" column="firstName" length="255"/>
     <field name="lastName" type="string" column="lastName" length="255"/>
     <field name="email" type="string" column="email" length="255"/>
+    <one-to-many field="employes" target-entity="Polcode\Bundle\RecruitmentBundle\Entity\Employee" mapped-by="am" />
+    <one-to-many field="projects" target-entity="Polcode\Bundle\RecruitmentBundle\Entity\Project" mapped-by="am" />
   </entity>
 </doctrine-mapping>

@@ -16,19 +16,30 @@ class AM
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     private $firstName;
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     private $lastName;
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Email(
+     *     message = "The email is not a valid",
+     *     checkMX = true
+     * )
      */
     private $email;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Polcode\Bundle\RecruitmentBundle\Entity\Employee", mappedBy="am")
+     */
+    protected $employes;
 
     /**
      * Get id
@@ -107,5 +118,45 @@ class AM
     public function getEmail()
     {
         return $this->email;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->employes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add employes
+     *
+     * @param \Polcode\Bundle\RecruitmentBundle\Entity\Employee $employes
+     * @return AM
+     */
+    public function addEmploye(\Polcode\Bundle\RecruitmentBundle\Entity\Employee $employes)
+    {
+        $this->employes[] = $employes;
+
+        return $this;
+    }
+
+    /**
+     * Remove employes
+     *
+     * @param \Polcode\Bundle\RecruitmentBundle\Entity\Employee $employes
+     */
+    public function removeEmploye(\Polcode\Bundle\RecruitmentBundle\Entity\Employee $employes)
+    {
+        $this->employes->removeElement($employes);
+    }
+
+    /**
+     * Get employes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEmployes()
+    {
+        return $this->employes;
     }
 }

@@ -54,6 +54,15 @@ class ProjectAdmin extends Admin
             ->add('isInternal')
             ->add('createdAt')
             ->add('endAt')
+                ->add('am','entity',array(
+            
+            'required'=>true,
+            'class'=>'PolcodeRecruitmentBundle:AM',
+            'property'=> 'UniqueName',
+                 'expanded' => true ,
+                'multiple' => false
+                
+            ))
         ;
     }
 
